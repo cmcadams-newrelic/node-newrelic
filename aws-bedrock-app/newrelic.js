@@ -7,6 +7,7 @@
  */
 exports.config = {
   app_name: ['aws-bedrock-app'],
+  host: "staging-collector.newrelic.com",
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
@@ -25,7 +26,7 @@ exports.config = {
     enabled: true
   },
   feature_flag: {
-    aws_bedrock_instrumentation: true 
+    aws_bedrock_instrumentation: true
   },
   custom_insights_events: {
     max_samples_stored: 100000

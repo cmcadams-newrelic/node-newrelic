@@ -63,7 +63,7 @@ fastify.post('/chat-completion', async (request, reply) => {
       case 'cohere':
         outputText = parsedResBody.generations[0].text;
         break;
-      case 'meta': 
+      case 'meta':
         outputText = parsedResBody.generation
         break;
     }
@@ -106,10 +106,10 @@ fastify.post('/chat-completion-stream', async(request, reply) => {
         reply.raw.write(chunk.chunk.bytes);
       }
     }
-  
+
     reply.raw.write('\n-------- END OF MESSAGE ---------\n');
     reply.raw.end();
-    
+
     return reply;
   } catch (error) {
     const code = error?.$metadata?.httpStatusCode || 500
@@ -119,7 +119,7 @@ fastify.post('/chat-completion-stream', async(request, reply) => {
 
 fastify.post('/embedding', async (request, reply) => {
   const { message = 'Test embedding', model = 'amazon-titan-embed' } = request.body || {}
-  
+
   const modelConfig = requests[model]
 
   if (!modelConfig) {
@@ -130,7 +130,7 @@ fastify.post('/embedding', async (request, reply) => {
 
   const prompt = {
     body: JSON.stringify(data.body),
-    modelId: data.modelId, 
+    modelId: data.modelId,
     contentType: 'application/json',
     accept: 'application/json'
   }
